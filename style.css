@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #0099ff, #00ff99);
+    }
+  
+  h1 {
+    color: rgb(0, 0, 0);
+    font-size: 36px;
+    text-align: center;
+  }
+  
+  p {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    line-height: 3;
+    margin: 20px;
+  }
+  
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  
