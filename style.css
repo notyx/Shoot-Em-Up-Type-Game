@@ -17,7 +17,7 @@ body {
   }
   
   img {
-      position: relative;
+      display: block;
       margin: 0 auto;
       max-width: 100%;
       animation-name: mymove;
