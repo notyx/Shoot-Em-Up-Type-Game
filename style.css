@@ -17,7 +17,7 @@ body {
   }
   
   img {
-    position: center;
+    position: relative;
     max-width: 100%;
     animation-name: mymove;
     animation-duration: 2s;
