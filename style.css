@@ -18,7 +18,7 @@ body {
   
   img {
     display: block;
-    margin: 0 auto;
+    margin: 0;
     max-width: 100%;
     animation-name: mymove;
     animation-duration: 4s;
