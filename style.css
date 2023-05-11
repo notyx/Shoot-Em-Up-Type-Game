@@ -20,5 +20,11 @@ body {
     display: block;
     margin: 0 auto;
     max-width: 100%;
+    animation-name: mymove;
+    animation-duration: 4s;
+    
   }
-  
+  @keyframes mymove {
+      from {left: 0px;}
+      to {left: 300px;}
+  }
