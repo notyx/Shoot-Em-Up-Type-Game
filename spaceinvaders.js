@@ -13,7 +13,18 @@ window.addEventListener('load' , function(){
     class Player {
       
     }
-  
+    class Enemy {
+      
+    }
+    class Background {
+        
+    }
+    class UI {
+        
+    }
+    class Game {
+    
+    }
  
 
 
