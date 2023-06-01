@@ -96,7 +96,24 @@ function startGame(){
   gameRunning=true;
   gameInit();
   construcArmy(armyX,armyY);
-  gmaeLoop();
+  gameLoop();
+  
+}
+
+function gameInit(){
+  invaderBulletArray =[];
+  armyArray  = [];
+  score = 0;
+  lives = allowedLives;
+  armyDirection = "right";
+  aliveInvaders = armyColumns* armyRows;
+  framecount= 0;
+  armyPrevFrameCount=0;
+  invBullet_prevFramecount= 0;
+  hasLifeDecreased= false;
+  armySpeed = 40;
+  
+  
   
 
 
