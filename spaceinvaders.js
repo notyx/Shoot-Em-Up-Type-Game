@@ -112,7 +112,7 @@ function gameInit(){
   invBullet_prevFramecount= 0;
   hasLifeDecreased= false;
   armySpeed = 40;
-  
+}
   
   
 
