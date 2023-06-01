@@ -65,7 +65,7 @@ var bullet__height = 10;
 var bullet__width = 3;
 var tankBullet__x;
 var tankBullet__y;
-var shouldMobeTankBullet = false;
+var shouldMoveTankBullet = false;
 var tankBullet__dy = 10;
 
 var invaderBulletArray = []
