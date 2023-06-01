@@ -70,7 +70,36 @@ var tankBullet__dy = 10;
 
 var invaderBulletArray = []
 var invBullet_dy = 5;
-var invBullet__prevFrameCount=à;
+var invBullet__prevFrameCount=0;
+
+// explosion 
+const background = '#FFF';
+var particlesPerExplosion =50;
+const particlesMinSpeed = 1;
+const particlesMaxSpeed = 6;
+const particlesMinSize = 1;
+var particlesMaxSize = 8;
+const explosions= []; 
+var explosionColor = 'red';
+let fps        = 60;
+const interval = 1000 / fps;
+
+let now, delta;
+let then = Date.now();
+
+// boucle principal du jeu 
+window.addEventListener('load' , function() {
+  drawStartScreen();
+})
+function startGame(){
+  clearInterval(startScreenTimeout);
+  gameRunning=true;
+  gameInit();
+  construcArmy(armyX,armyY);
+  gmaeLoop();
+  
+
+
 
 
 
