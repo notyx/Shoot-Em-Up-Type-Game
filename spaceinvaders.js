@@ -40,6 +40,42 @@ var lives = allowedLives;
 var hasLifeDecreased = false;
 var gameRunning = false;
 
+// Invaders
+var invaderWidth = spriteUnitWidth/2.5;
+var invaderHeight = spritUnitHeight/2.5;
+var invaderSpriteHeight = spritUnitHeight;
+var invaderSpriteHeigthsArray = [[68,102],[102,134],[102,134],[0,34],[0,34]];
+var spriteSelector =0
+var armyRows = 5;
+var armyColumns = 10;
+var armyX = 60;
+var armyY = 60;
+var invaderLeftOffset = 15;
+var invaderTopOffset = 20;
+var armyDirection = "right";
+var armyDx = 10;
+var armyDy = 10;
+var armySpeed = 40;
+var armySpeed_decrement = 10;
+let aliveInvaders = armyColumns* armyRows;
+var armyInvaderBulletSpeed = 4;
+var armyArray = [];
+// Tire (balles)
+var bullet__height = 10;
+var bullet__width = 3;
+var tankBullet__x;
+var tankBullet__y;
+var shouldMobeTankBullet = false;
+var tankBullet__dy = 10;
+
+var invaderBulletArray = []
+var invBullet_dy = 5;
+var invBullet__prevFrameCount=à;
+
+
+
+
+
 
 
 
