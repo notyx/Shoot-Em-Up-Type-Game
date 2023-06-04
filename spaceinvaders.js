@@ -473,7 +473,7 @@ function drawScoreSeprateLine(){
 }
 
 
-
+// message info du jeu
 function drawBottomMessage(message,sx){
   ctx.beginPath();
   ctx.font = "20px Play";
