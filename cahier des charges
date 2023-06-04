@@ -1,1 +1,7 @@
-
+1- Le personnage bouge de gauche à droite 
+2- Le personnage tire 
+3- Le personnage perds de la vie quand il et touché 
+4- Le personnage meurt lorsqu'il n'a plus de vie (fin de partie)
+5- Les ennemis bouge descendent et accélère de plus plus
+6- Les ennemis tire sur le personnage
+7- Les ennemis meurt quand ils sont touchés
