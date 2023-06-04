@@ -113,7 +113,158 @@ function gameInit(){
   hasLifeDecreased= false;
   armySpeed = 40;
 }
-  
+function gameLoop(){
+  // jeu perdu si vie perdues
+  if(lives <= 0 || !gameRunning){
+    gameRunning=false;
+    ctx.clearRect(0,0,canvas.width,canvas.height);    
+    drawScore();
+    drawLives();    
+    drawGameOver("you lost");
+    drawBottomHelper();
+    return false;
+  }
+  //jeu gagné si invaders tués
+  if(aliveInvaders == 0){
+    gameRunning=false;
+    drawGameOver("you won");
+    drawBottomHelper();
+    return false;
+  }
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  helperHandler();
+  drawScoreSeprateLine();
+  drawScore();
+  drawLives();
+  moveArmy();
+  drawArmyOfInvaders();
+  keyPressed();
+  drawTank(tankX,tankY);  
+  if(shouldMoveTankBullet) {
+    drawBullet(tankBullet__x,tankBullet__y);
+    moveTankBullet();
+  }
+  invadersBulletHandler();
+  animationID =  requestAnimationFrame(gameLoop);
+  frameCount++;
+  //explosion
+   now   = Date.now();
+   delta = now - then;
+   if (delta > interval) {
+     then = now - (delta % interval);
+     drawExplosion();
+   }
+  //explosions
+
+}
+
+
+
+
+
+
+
+
+// event listeners
+window.addEventListener("keydown", ()=>keys[event.keyCode] = true);
+window.addEventListener("keyup", ()=>keys[event.keyCode] = false);
+window.addEventListener("keypress", keypressedHandler);
+function keyPressed() {
+  if (keys[37]) {     
+    if (tankX-tankdX>0) {
+      tankX-=tankdX;
+    }
+  }
+  if (keys[39]) {
+    if(canvas.width - (tankX+tankWidth) > tankdX) {
+      tankX+=tankdX;
+    }  
+  }
+  if (keys[88] || keys[32]) {    
+    if(!shouldMoveTankBullet)fireTankBullet();
+  }
+}
+function keypressedHandler(){
+  if(event.keyCode == "13" && !gameRunning){
+    startGame();
+  }
+}
+
+// ###################################################################
+
+
+// gestionnaires
+function invadersBulletHandler(){
+  if(invaderBulletsArray.length<3 &&  frameCount- invBullet__prevFrameCount>(armySpeed*armyInvaderBulletsSpeed)){
+    generateInvaderRandomBullet();
+    invBullet__prevFrameCount=frameCount;
+  }
+  moveInvaderBullets();
+
+}
+
+function generateInvaderRandomBullet(){
+    // let randomInvaderR = genRandomNumber(armyRows); 
+    // let randomInvaderC = genRandomNumber(armyColumns); 
+    // let rInvader = armyArray[randomInvaderR][randomInvaderC];
+    let aliveArmy = [];
+    for (let i = 0; i < armyRows; i++) {    
+      for(let j = 0; j < armyColumns; j++){
+        let soldier = armyArray[i][j];
+        if(soldier.status=='alive')        
+        aliveArmy.push(armyArray[i][j]);
+      }
+    }
+    
+    let rInvader = aliveArmy[genRandomNumber(aliveArmy.length)];
+    if (rInvader.status=='alive') {
+      let iBullet = {
+        x : rInvader.x + invaderWidth/2,
+        y : rInvader.y + invaderHeight    
+      };
+      invaderBulletsArray.push(iBullet);
+      drawInvaderBullet(iBullet.x,iBullet.y);
+    }
+    
+
+}
+
+function genRandomNumber(rng){
+  return Math.floor(Math.random()*rng);
+}
+
+function moveInvaderBullets(){
+  for(let i = 0 ; i < invaderBulletsArray.length; i++){
+    let iB = invaderBulletsArray[i];    
+    iB.y = iB.y + invBullet_dy;
+    // vérifier si la balle est hors limites
+    if(iB.y > canvas.height){
+      invaderBulletsArray.splice(i,1);
+    }
+    // vérifier si le jeu est terminé par une balle touchée
+    if(
+      iB.x > tankX &&
+      iB.x < tankX + tankWidth &&
+      iB.y > tankY && 
+      iB.y < tankY + tankHeight
+    )
+    {
+      explosionColor="green";
+      particlesPerExplosion   = 150;
+      particlesMaxSize      = 4;
+      triggerExplosion(tankX+tankWidth/2,tankY+tankHeight/2);
+      invaderBulletsArray.splice(i,1);
+      console.log("lost 1 life");            
+      lives--;
+      hasLifeDecreased=true;
+    }
+    
+    drawInvaderBullet(iB.x,iB.y);
+
+  }
+}
+
+    
   
 
 
