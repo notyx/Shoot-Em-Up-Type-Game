@@ -628,8 +628,8 @@ function particle(x, y) {
   this.b    = randInt(105, 255);
 }
 
-// Returns an random integer, positive or negative
-// between the given value
+// Renvoie un entier aléatoire
+// entre la valeur donnée
 function randInt(min, max, positive) {
 
   let num;
@@ -644,13 +644,6 @@ function randInt(min, max, positive) {
 
 }
 
-// // On-click
-// document.addEventListener('click',(e)=>{
-//   triggerExplosion(e);
-// });
-
-
-// ################################################################### Explosion functions
 
     
   
